@@ -1,8 +1,10 @@
 import React from "react";
 import * as Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-
+import Boost from "highcharts/modules/boost";
 import { ChartProps } from "../types";
+
+Boost(Highcharts);
 
 const D3WithHighCharts: React.FC<ChartProps> = ({
   yExtent,
@@ -44,10 +46,12 @@ const D3WithHighCharts: React.FC<ChartProps> = ({
       enabled: true,
       useGPUTranslations: true,
       usePreallocated: true,
+      seriesThreshold: 1,
     },
     series: slicedData.map((dotData, i) => {
       return {
         name: `Data ${i}`,
+        boostThreshold: 100,
         color: dotData.color,
         data: dotData.data.map((dot) => [dot.x, dot.y]),
         type: "scatter",
