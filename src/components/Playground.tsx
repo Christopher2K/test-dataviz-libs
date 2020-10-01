@@ -5,32 +5,6 @@ import D3WithCanvas from "./D3WithCanvas";
 import D3WithHighCharts from "./D3WithHighCharts";
 
 import * as t from "../types";
-import { extent, NumberValue } from "d3";
-import { shuffleArray } from "../utilss";
-
-type ResponseJson = {
-  groupsLow: Array<{
-    color: string;
-    data: Array<{
-      x: number;
-      y: number;
-    }>;
-  }>;
-  groupsMedium: Array<{
-    color: string;
-    data: Array<{
-      x: number;
-      y: number;
-    }>;
-  }>;
-  groupsHigh: Array<{
-    color: string;
-    data: Array<{
-      x: number;
-      y: number;
-    }>;
-  }>;
-};
 
 const Container = styled.div`
   width: 100%;
@@ -65,11 +39,10 @@ const Content = styled.div`
 
 const Playground: React.FC = ({ children }) => {
   const [currentLib, setCurrentLib] = React.useState<t.PlotType>("d3svg");
-  const [data, setData] = React.useState<Array<t.DotData>>();
+  const [data, setData] = React.useState<t.Data>();
+  const [availableClusters, setClusters] = React.useState<Array<t.Cluster>>();
   const [numberOfGroups, setNumberOfGroups] = React.useState(0);
   const [numberOfPlots, setNumberOfPlots] = React.useState(0);
-  const [xExtent, setXextent] = React.useState<NumberValue[]>();
-  const [yExtent, setYextent] = React.useState<NumberValue[]>();
 
   const ChartComponent = (() => {
     switch (currentLib) {
@@ -85,17 +58,9 @@ const Playground: React.FC = ({ children }) => {
   React.useEffect(() => {
     fetch("/MOCK_DATA.json")
       .then((resp) => resp.json())
-      .then((json) => {
-        const r: ResponseJson = json[0];
-        const d = [...r.groupsLow, ...r.groupsMedium, ...r.groupsHigh];
-
-        const dots = d.reduce((acc, item) => {
-          return [...acc, ...item.data];
-        }, [] as t.Dot[]);
-        setXextent(extent(dots, (d) => d.x) as NumberValue[]);
-        setYextent(extent(dots, (d) => d.y) as NumberValue[]);
-        shuffleArray(d);
-        setData(d);
+      .then((data) => {
+        setData(data);
+        setClusters(Object.keys(data));
       });
   }, []);
 
@@ -127,7 +92,7 @@ const Playground: React.FC = ({ children }) => {
       <h2>{t.plotTitle[currentLib]}</h2>
       {children}
       <Content>
-        {data == null || xExtent == null || yExtent == null ? (
+        {data == null || availableClusters == null ? (
           <p>Chargement des données...</p>
         ) : (
           Array(numberOfPlots)
@@ -135,10 +100,8 @@ const Playground: React.FC = ({ children }) => {
             .map((_, i) => (
               <ChartComponent
                 key={i}
-                rawData={data}
-                numberOfGroups={numberOfGroups}
-                xExtent={xExtent}
-                yExtent={yExtent}
+                data={data}
+                availableClusters={availableClusters}
               />
             ))
         )}
