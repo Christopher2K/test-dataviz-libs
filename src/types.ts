@@ -19,4 +19,4 @@ export type ChartProps = {
   clusterColors: Record<Cluster, string>;
 };
 
-export type Dot = { x: number; y: number };
+export type Dot = { color: string; x: number; y: number };
