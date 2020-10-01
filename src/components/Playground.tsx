@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "@emotion/styled";
 import D3WithSVG from "./D3WithSVG";
 import D3WithCanvas from "./D3WithCanvas";
 import D3WithHighCharts from "./D3WithHighCharts";
+import ClusterSelection from "./ClusterSelection";
 
 import * as t from "../types";
+import { getRandomColor } from "../utilss";
 
 const Container = styled.div`
   width: 100%;
@@ -18,7 +20,7 @@ const Container = styled.div`
   padding: 20px;
 `;
 
-const ButtonsContainer = styled.div`
+const TopContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -41,7 +43,11 @@ const Playground: React.FC = ({ children }) => {
   const [currentLib, setCurrentLib] = React.useState<t.PlotType>("d3svg");
   const [data, setData] = React.useState<t.Data>();
   const [availableClusters, setClusters] = React.useState<Array<t.Cluster>>();
-  const [numberOfGroups, setNumberOfGroups] = React.useState(0);
+  const [availableMarkers, setMarkers] = React.useState<Array<t.Marker>>();
+  const [selectedClusters, setClustersSelected] = React.useState<
+    Array<t.Cluster>
+  >([]);
+  const clusterColors = useRef<Record<t.Cluster, string>>({});
   const [numberOfPlots, setNumberOfPlots] = React.useState(0);
 
   const ChartComponent = (() => {
@@ -56,18 +62,42 @@ const Playground: React.FC = ({ children }) => {
   })();
 
   React.useEffect(() => {
-    fetch("/MOCK_DATA.json")
+    if (
+      availableClusters != null &&
+      Object.keys(clusterColors.current).length === 0
+    ) {
+      availableClusters.forEach((cluster) => {
+        clusterColors.current[cluster] = getRandomColor();
+      });
+    }
+  }, [availableClusters]);
+
+  React.useEffect(() => {
+    fetch("/DATA.json")
       .then((resp) => resp.json())
       .then((data) => {
+        const clusters = Object.keys(data);
+        const markers = Object.keys(data[clusters[0]][0]);
         setData(data);
-        setClusters(Object.keys(data));
+        setClusters(clusters);
+        setMarkers(markers);
       });
   }, []);
+
+  const onCheckboxClicked = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = (event.target as HTMLInputElement).value;
+
+    if (selectedClusters.includes(value)) {
+      setClustersSelected(selectedClusters.filter((c) => c !== value) ?? []);
+    } else {
+      setClustersSelected([...selectedClusters, value]);
+    }
+  };
 
   return (
     <Container>
       <h1>Playground Dataviz #1</h1>
-      <ButtonsContainer>
+      <TopContainer>
         <PlotButton onClick={() => setCurrentLib("d3svg")}>D3 SVG</PlotButton>
         <PlotButton onClick={() => setCurrentLib("d3canvas")}>
           D3 CANVAS
@@ -75,33 +105,58 @@ const Playground: React.FC = ({ children }) => {
         <PlotButton onClick={() => setCurrentLib("highchart")}>
           HIGH CHARTS
         </PlotButton>
-        <PlotButton onClick={() => setNumberOfGroups(numberOfGroups + 1)}>
-          Ajouter un groupe
-        </PlotButton>
-        <PlotButton onClick={() => setNumberOfGroups(numberOfGroups - 1)}>
-          Retirer un groupe
-        </PlotButton>
         <PlotButton onClick={() => setNumberOfPlots(numberOfPlots + 1)}>
           Ajouter un plot
         </PlotButton>
         <PlotButton onClick={() => setNumberOfPlots(numberOfPlots - 1)}>
           Retirer un plot
         </PlotButton>
-      </ButtonsContainer>
+      </TopContainer>
+      {availableClusters != null && (
+        <>
+          <p>Clusters disponibles</p>
+          <TopContainer>
+            {availableClusters.map((c) => (
+              <label htmlFor={c} key={c}>
+                <input
+                  type="checkbox"
+                  id={c}
+                  name="cluster"
+                  value={c}
+                  onChange={onCheckboxClicked}
+                  checked={selectedClusters.includes(c)}
+                />
+                {c}
+              </label>
+            ))}
+          </TopContainer>
+        </>
+      )}
 
       <h2>{t.plotTitle[currentLib]}</h2>
       {children}
       <Content>
-        {data == null || availableClusters == null ? (
+        {data == null ||
+        availableClusters == null ||
+        availableMarkers == null ? (
           <p>Chargement des données...</p>
         ) : (
           Array(numberOfPlots)
             .fill(undefined)
             .map((_, i) => (
-              <ChartComponent
+              <ClusterSelection
                 key={i}
-                data={data}
-                availableClusters={availableClusters}
+                availableMarkers={availableMarkers}
+                renderChart={({ markerX, markerY }) => (
+                  <ChartComponent
+                    key={i}
+                    data={data}
+                    markerX={markerX}
+                    markerY={markerY}
+                    selectedClusters={selectedClusters}
+                    clusterColors={clusterColors.current}
+                  />
+                )}
               />
             ))
         )}

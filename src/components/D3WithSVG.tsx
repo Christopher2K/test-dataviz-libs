@@ -13,8 +13,6 @@ const D3WithSVG: React.FC<ChartProps> = () => {
   // const width = w - margin * 2;
   // const height = h - margin * 2;
 
-  // const slicedData = rawData.slice(0, numberOfGroups);
-
   // const xScale = scaleLinear().domain(xExtent).range([0, width]);
   // const yScale = scaleLinear().domain(yExtent).range([height, 0]);
 
