@@ -11,8 +11,8 @@ const D3WithSVG: React.FC<ChartProps> = ({
   xExtent,
   yExtent,
 }) => {
-  const w = 600;
-  const h = 600;
+  const w = 300;
+  const h = 300;
   const margin = 40;
   const width = w - margin * 2;
   const height = h - margin * 2;

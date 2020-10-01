@@ -55,7 +55,13 @@ const PlotButton = styled.button`
   margin-right: 20px;
 `;
 
-const Content = styled.div``;
+const Content = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+`;
 
 const Playground: React.FC = ({ children }) => {
   const [currentLib, setCurrentLib] = React.useState<t.PlotType>("d3svg");
