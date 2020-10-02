@@ -18,18 +18,24 @@ type HighchartDataModel = {
 };
 
 const Sunburst: React.FC<SunburstProps> = () => {
-  const [data, setData] = React.useState<SunburstCluster>();
   const [formattedData, setFormattedData] = React.useState<
     Array<HighchartDataModel>
   >();
   const [usedData, setUsedData] = React.useState<Array<HighchartDataModel>>();
-  const [leafs, setLeafs] = React.useState<Array<string>>();
+  const [, setLeafs] = React.useState<Array<string>>();
   // const [option, setOptions] = React.useState<Highcharts.Options>();
 
   const options: Highcharts.Options = {
+    title: {
+      text: "",
+    },
     chart: {
-      height: 600,
-      width: 600,
+      zoomType: "xy",
+      panning: {
+        enabled: true,
+        type: "xy",
+      },
+      panKey: "shift",
     },
     series: [
       {
@@ -38,7 +44,7 @@ const Sunburst: React.FC<SunburstProps> = () => {
         events: {
           click: function (event) {
             const pointId = ((event.point as unknown) as { id: string }).id;
-            addChilds(pointId.toString());
+            updateChilds(pointId.toString());
           },
         },
         dataLabels: {
@@ -89,11 +95,32 @@ const Sunburst: React.FC<SunburstProps> = () => {
     []
   );
 
+  const findNodesToRemove = React.useCallback(
+    (parentId: string, nodesToRemove: Array<HighchartDataModel>) => {
+      if (usedData) {
+        const directChilds = usedData.filter((p) => p.parent === parentId);
+
+        let _nodesToRemoves = [...nodesToRemove, ...directChilds];
+
+        if (directChilds.length === 0) {
+          return _nodesToRemoves;
+        } else {
+          for (const child of directChilds) {
+            _nodesToRemoves = findNodesToRemove(child.id, _nodesToRemoves);
+          }
+
+          return _nodesToRemoves;
+        }
+      }
+      return nodesToRemove;
+    },
+    [usedData]
+  );
+
   React.useEffect(() => {
     fetch("/CLUSTER.json")
       .then((resp) => resp.json())
-      .then((d) => {
-        setData(d);
+      .then((d: SunburstCluster) => {
         const _leafs = getLeafsFromData([], d);
         setLeafs(_leafs);
         const _formattedData = mapNodeWithParents("", d, []);
@@ -102,10 +129,23 @@ const Sunburst: React.FC<SunburstProps> = () => {
       });
   }, [getLeafsFromData, mapNodeWithParents]);
 
-  const addChilds = (parentId: string) => {
+  const updateChilds = (parentId: string) => {
     if (formattedData && usedData) {
-      const childs = formattedData.filter((d) => d.parent === parentId);
-      setUsedData([...usedData, ...childs]);
+      const alreadyAdded = usedData.some((d) => d.parent === parentId);
+      let updatedData: Array<HighchartDataModel> = [];
+
+      if (alreadyAdded) {
+        const nodesToRemoveId = findNodesToRemove(parentId, []).map(
+          (d) => d.id
+        );
+        updatedData = usedData.filter((d) => !nodesToRemoveId.includes(d.id));
+      } else {
+        const childs = formattedData.filter((d) => d.parent === parentId);
+        updatedData = [...usedData, ...childs];
+      }
+
+      console.log(updatedData.length);
+      setUsedData(updatedData);
     }
   };
 
