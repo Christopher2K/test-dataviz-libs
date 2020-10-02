@@ -12,6 +12,7 @@ export type SunburstCluster = {
     is_hidden: boolean;
     count: number;
     children: SunburstCluster;
+    depth: number;
   };
 };
 

@@ -14,8 +14,20 @@ function getLeafs(leafs, data) {
   return _leafs;
 }
 
+function getDepth(maxDepth, data) {
+  let _maxDepth = maxDepth;
+  _.map(data, (value, key) => {
+    if (Object.keys(value["children"]).length === 0) {
+      _maxDepth = maxDepth < value["depth"] ? value["depth"] : maxDepth;
+    } else {
+      _maxDepth = getDepth(_maxDepth, value["children"]);
+    }
+  });
+
+  return _maxDepth;
+}
+
 fs.readFile("CLUSTER.json").then((raw) => {
   const data = JSON.parse(raw.toString());
-  console.log(getLeafs([], data));
-  console.log(getLeafs([], data).length);
+  console.log(getDepth(0, data));
 });

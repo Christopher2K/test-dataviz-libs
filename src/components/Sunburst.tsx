@@ -21,16 +21,16 @@ type HighchartDataModel = {
   parent: string;
   name: string;
   value: number;
+  depth: number;
 };
 
 const Sunburst: React.FC<SunburstProps> = () => {
   const [formattedData, setFormattedData] = React.useState<
     Array<HighchartDataModel>
   >();
+  const [maxDepth, setMaxDepth] = React.useState<number>();
   const [usedData, setUsedData] = React.useState<Array<HighchartDataModel>>();
-  const [leafs, setLeafs] = React.useState<Array<string>>();
   const [rangeValue, setRangeValue] = React.useState(0);
-  // const [option, setOptions] = React.useState<Highcharts.Options>();
 
   const options: Highcharts.Options = {
     title: {
@@ -63,18 +63,19 @@ const Sunburst: React.FC<SunburstProps> = () => {
       },
     ],
   };
-  const getLeafsFromData = React.useCallback(
-    (leafsList: Array<string>, d: SunburstCluster) => {
-      let _leafs = [...leafsList];
+
+  const getDepthFromData = React.useCallback(
+    (maxDepth: number, d: SunburstCluster) => {
+      let _maxDepth = maxDepth;
       _.map(d, (value, key) => {
         if (Object.keys(value.children).length === 0) {
-          _leafs = [..._leafs, key];
+          _maxDepth = maxDepth < value.depth ? value.depth : maxDepth;
         } else {
-          _leafs = getLeafsFromData(_leafs, value.children);
+          _maxDepth = getDepthFromData(_maxDepth, value.children);
         }
       });
 
-      return _leafs;
+      return _maxDepth;
     },
     []
   );
@@ -88,6 +89,7 @@ const Sunburst: React.FC<SunburstProps> = () => {
           parent: parent,
           name: value.label,
           value: value.count,
+          depth: value.depth,
         };
 
         const newList = [..._list, newItem];
@@ -125,32 +127,6 @@ const Sunburst: React.FC<SunburstProps> = () => {
     [usedData]
   );
 
-  const findNodesToOpen: (
-    n: HighchartDataModel,
-    nto: Array<HighchartDataModel>
-  ) => Array<HighchartDataModel> = React.useCallback(
-    (node, nodesToOpen) => {
-      if (formattedData) {
-        const parent = formattedData.find((d) => d.id === node.parent);
-
-        let _nodesToOpen: Array<HighchartDataModel> = [
-          node,
-          ...nodesToOpen,
-          ...(parent ? [parent] : []),
-        ];
-
-        if (parent) {
-          return findNodesToOpen(parent, _nodesToOpen);
-        } else {
-          return _nodesToOpen;
-        }
-      }
-
-      return nodesToOpen;
-    },
-    [formattedData]
-  );
-
   const updateChilds = (parentId: string) => {
     if (formattedData && usedData) {
       const alreadyAdded = usedData.some((d) => d.parent === parentId);
@@ -177,48 +153,35 @@ const Sunburst: React.FC<SunburstProps> = () => {
     []
   );
 
-  const updateAccordingToSlider = useCallback(() => {
-    if (leafs && formattedData) {
-      const concernedLeafs = leafs
-        .slice(0, rangeValue)
-        .map(
-          (id) => formattedData.find((d) => d.id === id) as HighchartDataModel
-        );
-
-      const nodes = _.uniqBy(
-        concernedLeafs
-          .map((leaf) => findNodesToOpen(leaf, []))
-          .flatMap((f) => f),
-        (e) => e.id
-      );
-
-      setUsedData(nodes);
+  const updateAccordingToSlider = React.useCallback(() => {
+    if (formattedData) {
+      setUsedData(formattedData.filter((d) => d.depth <= rangeValue));
     }
-  }, [findNodesToOpen, formattedData, leafs, rangeValue]);
+  }, [formattedData, rangeValue]);
 
   React.useEffect(() => {
     fetch("/CLUSTER.json")
       .then((resp) => resp.json())
       .then((d: SunburstCluster) => {
-        const _leafs = getLeafsFromData([], d);
-        setLeafs(_leafs);
+        const depth = getDepthFromData(0, d);
+        setMaxDepth(depth);
         const _formattedData = mapNodeWithParents("", d, []);
         setFormattedData(_formattedData);
         setUsedData([_formattedData[0]]);
       });
-  }, [getLeafsFromData, mapNodeWithParents]);
+  }, [getDepthFromData, mapNodeWithParents]);
 
   return (
     <Container>
       {usedData && (
         <HighchartsReact highcharts={Highcharts} options={options} />
       )}
-      {leafs && (
+      {maxDepth && (
         <div>
           <input
             type="range"
             min={1}
-            max={leafs.length}
+            max={maxDepth}
             value={rangeValue}
             onChange={changeSliderValue}
             onMouseUp={updateAccordingToSlider}
