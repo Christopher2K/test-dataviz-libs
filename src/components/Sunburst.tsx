@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useCallback } from "react";
+import styled from "@emotion/styled";
 import _ from "lodash";
 import * as Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
@@ -7,6 +8,11 @@ import SunburstModule from "highcharts/modules/sunburst";
 import { SunburstCluster } from "../types";
 
 SunburstModule(Highcharts);
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 type SunburstProps = {};
 
@@ -22,7 +28,8 @@ const Sunburst: React.FC<SunburstProps> = () => {
     Array<HighchartDataModel>
   >();
   const [usedData, setUsedData] = React.useState<Array<HighchartDataModel>>();
-  const [, setLeafs] = React.useState<Array<string>>();
+  const [leafs, setLeafs] = React.useState<Array<string>>();
+  const [rangeValue, setRangeValue] = React.useState(0);
   // const [option, setOptions] = React.useState<Highcharts.Options>();
 
   const options: Highcharts.Options = {
@@ -30,6 +37,8 @@ const Sunburst: React.FC<SunburstProps> = () => {
       text: "",
     },
     chart: {
+      height: 500,
+      width: 600,
       zoomType: "xy",
       panning: {
         enabled: true,
@@ -54,7 +63,6 @@ const Sunburst: React.FC<SunburstProps> = () => {
       },
     ],
   };
-
   const getLeafsFromData = React.useCallback(
     (leafsList: Array<string>, d: SunburstCluster) => {
       let _leafs = [...leafsList];
@@ -117,17 +125,31 @@ const Sunburst: React.FC<SunburstProps> = () => {
     [usedData]
   );
 
-  React.useEffect(() => {
-    fetch("/CLUSTER.json")
-      .then((resp) => resp.json())
-      .then((d: SunburstCluster) => {
-        const _leafs = getLeafsFromData([], d);
-        setLeafs(_leafs);
-        const _formattedData = mapNodeWithParents("", d, []);
-        setFormattedData(_formattedData);
-        setUsedData([_formattedData[0]]);
-      });
-  }, [getLeafsFromData, mapNodeWithParents]);
+  const findNodesToOpen: (
+    n: HighchartDataModel,
+    nto: Array<HighchartDataModel>
+  ) => Array<HighchartDataModel> = React.useCallback(
+    (node, nodesToOpen) => {
+      if (formattedData) {
+        const parent = formattedData.find((d) => d.id === node.parent);
+
+        let _nodesToOpen: Array<HighchartDataModel> = [
+          node,
+          ...nodesToOpen,
+          ...(parent ? [parent] : []),
+        ];
+
+        if (parent) {
+          return findNodesToOpen(parent, _nodesToOpen);
+        } else {
+          return _nodesToOpen;
+        }
+      }
+
+      return nodesToOpen;
+    },
+    [formattedData]
+  );
 
   const updateChilds = (parentId: string) => {
     if (formattedData && usedData) {
@@ -144,17 +166,66 @@ const Sunburst: React.FC<SunburstProps> = () => {
         updatedData = [...usedData, ...childs];
       }
 
-      console.log(updatedData.length);
       setUsedData(updatedData);
     }
   };
 
+  const changeSliderValue = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setRangeValue(+e.target.value);
+    },
+    []
+  );
+
+  const updateAccordingToSlider = useCallback(() => {
+    if (leafs && formattedData) {
+      const concernedLeafs = leafs
+        .slice(0, rangeValue)
+        .map(
+          (id) => formattedData.find((d) => d.id === id) as HighchartDataModel
+        );
+
+      const nodes = _.uniqBy(
+        concernedLeafs
+          .map((leaf) => findNodesToOpen(leaf, []))
+          .flatMap((f) => f),
+        (e) => e.id
+      );
+
+      setUsedData(nodes);
+    }
+  }, [findNodesToOpen, formattedData, leafs, rangeValue]);
+
+  React.useEffect(() => {
+    fetch("/CLUSTER.json")
+      .then((resp) => resp.json())
+      .then((d: SunburstCluster) => {
+        const _leafs = getLeafsFromData([], d);
+        setLeafs(_leafs);
+        const _formattedData = mapNodeWithParents("", d, []);
+        setFormattedData(_formattedData);
+        setUsedData([_formattedData[0]]);
+      });
+  }, [getLeafsFromData, mapNodeWithParents]);
+
   return (
-    <>
+    <Container>
       {usedData && (
         <HighchartsReact highcharts={Highcharts} options={options} />
       )}
-    </>
+      {leafs && (
+        <div>
+          <input
+            type="range"
+            min={1}
+            max={leafs.length}
+            value={rangeValue}
+            onChange={changeSliderValue}
+            onMouseUp={updateAccordingToSlider}
+          />
+        </div>
+      )}
+    </Container>
   );
 };
 
