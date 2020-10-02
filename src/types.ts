@@ -1,8 +1,18 @@
-export type PlotType = "d3svg" | "d3canvas" | "highchart";
+export type PlotType = "d3svg" | "d3canvas" | "highchart" | "sunburst";
 export const plotTitle: Record<PlotType, string> = {
   d3svg: "D3 avec SVG",
   d3canvas: "D3 avec Canvas",
   highchart: "High Chart",
+  sunburst: "Sunburst Chart",
+};
+
+export type SunburstCluster = {
+  [name: string]: {
+    label: string;
+    is_hidden: boolean;
+    count: number;
+    children: SunburstCluster;
+  };
 };
 
 export type Cluster = string;

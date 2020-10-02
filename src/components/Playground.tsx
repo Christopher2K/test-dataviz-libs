@@ -4,6 +4,7 @@ import D3WithSVG from "./D3WithSVG";
 import D3WithCanvas from "./D3WithCanvas";
 import D3WithHighCharts from "./D3WithHighCharts";
 import ClusterSelection from "./ClusterSelection";
+import Sunburst from "./Sunburst";
 
 import * as t from "../types";
 import { getRandomColor } from "../utilss";
@@ -40,7 +41,7 @@ const Content = styled.div`
 `;
 
 const Playground: React.FC = ({ children }) => {
-  const [currentLib, setCurrentLib] = React.useState<t.PlotType>("d3svg");
+  const [currentLib, setCurrentLib] = React.useState<t.PlotType>("sunburst");
   const [data, setData] = React.useState<t.Data>();
   const [availableClusters, setClusters] = React.useState<Array<t.Cluster>>();
   const [availableMarkers, setMarkers] = React.useState<Array<t.Marker>>();
@@ -58,6 +59,8 @@ const Playground: React.FC = ({ children }) => {
         return D3WithCanvas;
       case "highchart":
         return D3WithHighCharts;
+      case "sunburst":
+        return Sunburst;
     }
   })();
 
@@ -105,6 +108,9 @@ const Playground: React.FC = ({ children }) => {
         <PlotButton onClick={() => setCurrentLib("highchart")}>
           HIGH CHARTS
         </PlotButton>
+        <PlotButton onClick={() => setCurrentLib("sunburst")}>
+          SUNBURST
+        </PlotButton>
         <PlotButton onClick={() => setNumberOfPlots(numberOfPlots + 1)}>
           Ajouter un plot
         </PlotButton>
@@ -140,6 +146,8 @@ const Playground: React.FC = ({ children }) => {
         availableClusters == null ||
         availableMarkers == null ? (
           <p>Chargement des données...</p>
+        ) : currentLib === "sunburst" ? (
+          <Sunburst />
         ) : (
           Array(numberOfPlots)
             .fill(undefined)

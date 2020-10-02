@@ -1,0 +1,1149 @@
+{
+  "134": {
+    "label": "Total population",
+    "is_hidden": false,
+    "count": 66676,
+    "parent_rate": 1.0,
+    "depth": 1,
+    "children": {
+      "130": {
+        "label": "cluster_5",
+        "is_hidden": true,
+        "count": 23160,
+        "parent_rate": 34.7,
+        "depth": 2,
+        "children": {
+          "123": {
+            "label": "cluster_12",
+            "is_hidden": true,
+            "count": 14882,
+            "parent_rate": 64.3,
+            "depth": 3,
+            "children": {
+              "100": {
+                "label": "cluster_35",
+                "is_hidden": true,
+                "count": 5430,
+                "parent_rate": 36.5,
+                "depth": 4,
+                "children": {
+                  "69": {
+                    "label": "cluster_66",
+                    "is_hidden": true,
+                    "count": 2799,
+                    "parent_rate": 51.5,
+                    "depth": 5,
+                    "children": {
+                      "3": {
+                        "label": "cluster_132",
+                        "is_hidden": true,
+                        "count": 2553,
+                        "parent_rate": 91.2,
+                        "depth": 6,
+                        "children": {}
+                      },
+                      "6": {
+                        "label": "cluster_129",
+                        "is_hidden": true,
+                        "count": 246,
+                        "parent_rate": 8.8,
+                        "depth": 6,
+                        "children": {}
+                      }
+                    }
+                  },
+                  "4": {
+                    "label": "cluster_131",
+                    "is_hidden": true,
+                    "count": 2631,
+                    "parent_rate": 48.5,
+                    "depth": 5,
+                    "children": {}
+                  }
+                }
+              },
+              "118": {
+                "label": "cluster_17",
+                "is_hidden": true,
+                "count": 9452,
+                "parent_rate": 63.5,
+                "depth": 4,
+                "children": {
+                  "95": {
+                    "label": "cluster_40",
+                    "is_hidden": true,
+                    "count": 7757,
+                    "parent_rate": 82.1,
+                    "depth": 5,
+                    "children": {
+                      "13": {
+                        "label": "cluster_122",
+                        "is_hidden": true,
+                        "count": 3255,
+                        "parent_rate": 42.0,
+                        "depth": 6,
+                        "children": {}
+                      },
+                      "90": {
+                        "label": "cluster_45",
+                        "is_hidden": true,
+                        "count": 4502,
+                        "parent_rate": 58.0,
+                        "depth": 6,
+                        "children": {
+                          "89": {
+                            "label": "cluster_46",
+                            "is_hidden": true,
+                            "count": 4055,
+                            "parent_rate": 90.1,
+                            "depth": 7,
+                            "children": {
+                              "85": {
+                                "label": "cluster_50",
+                                "is_hidden": true,
+                                "count": 2329,
+                                "parent_rate": 57.4,
+                                "depth": 8,
+                                "children": {
+                                  "82": {
+                                    "label": "cluster_53",
+                                    "is_hidden": true,
+                                    "count": 1872,
+                                    "parent_rate": 80.4,
+                                    "depth": 9,
+                                    "children": {
+                                      "68": {
+                                        "label": "cluster_67",
+                                        "is_hidden": true,
+                                        "count": 1172,
+                                        "parent_rate": 62.6,
+                                        "depth": 10,
+                                        "children": {
+                                          "17": {
+                                            "label": "cluster_118",
+                                            "is_hidden": true,
+                                            "count": 815,
+                                            "parent_rate": 69.5,
+                                            "depth": 11,
+                                            "children": {}
+                                          },
+                                          "21": {
+                                            "label": "cluster_114",
+                                            "is_hidden": true,
+                                            "count": 357,
+                                            "parent_rate": 30.5,
+                                            "depth": 11,
+                                            "children": {}
+                                          }
+                                        }
+                                      },
+                                      "22": {
+                                        "label": "cluster_113",
+                                        "is_hidden": true,
+                                        "count": 700,
+                                        "parent_rate": 37.4,
+                                        "depth": 10,
+                                        "children": {}
+                                      }
+                                    }
+                                  },
+                                  "24": {
+                                    "label": "cluster_111",
+                                    "is_hidden": true,
+                                    "count": 457,
+                                    "parent_rate": 19.6,
+                                    "depth": 9,
+                                    "children": {}
+                                  }
+                                }
+                              },
+                              "18": {
+                                "label": "cluster_117",
+                                "is_hidden": true,
+                                "count": 1726,
+                                "parent_rate": 42.6,
+                                "depth": 8,
+                                "children": {}
+                              }
+                            }
+                          },
+                          "28": {
+                            "label": "cluster_107",
+                            "is_hidden": true,
+                            "count": 447,
+                            "parent_rate": 9.9,
+                            "depth": 7,
+                            "children": {}
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "103": {
+                    "label": "cluster_32",
+                    "is_hidden": true,
+                    "count": 1695,
+                    "parent_rate": 17.9,
+                    "depth": 5,
+                    "children": {
+                      "27": {
+                        "label": "cluster_108",
+                        "is_hidden": true,
+                        "count": 200,
+                        "parent_rate": 11.8,
+                        "depth": 6,
+                        "children": {}
+                      },
+                      "80": {
+                        "label": "cluster_55",
+                        "is_hidden": true,
+                        "count": 1495,
+                        "parent_rate": 88.2,
+                        "depth": 6,
+                        "children": {
+                          "11": {
+                            "label": "cluster_124",
+                            "is_hidden": true,
+                            "count": 1270,
+                            "parent_rate": 84.9,
+                            "depth": 7,
+                            "children": {}
+                          },
+                          "19": {
+                            "label": "cluster_116",
+                            "is_hidden": true,
+                            "count": 225,
+                            "parent_rate": 15.1,
+                            "depth": 7,
+                            "children": {}
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "124": {
+            "label": "cluster_11",
+            "is_hidden": true,
+            "count": 8278,
+            "parent_rate": 35.7,
+            "depth": 3,
+            "children": {
+              "109": {
+                "label": "cluster_26",
+                "is_hidden": true,
+                "count": 3180,
+                "parent_rate": 38.4,
+                "depth": 4,
+                "children": {
+                  "26": {
+                    "label": "cluster_109",
+                    "is_hidden": true,
+                    "count": 1702,
+                    "parent_rate": 53.5,
+                    "depth": 5,
+                    "children": {}
+                  },
+                  "84": {
+                    "label": "cluster_51",
+                    "is_hidden": true,
+                    "count": 1478,
+                    "parent_rate": 46.5,
+                    "depth": 5,
+                    "children": {
+                      "30": {
+                        "label": "cluster_105",
+                        "is_hidden": true,
+                        "count": 884,
+                        "parent_rate": 59.8,
+                        "depth": 6,
+                        "children": {}
+                      },
+                      "34": {
+                        "label": "cluster_101",
+                        "is_hidden": true,
+                        "count": 594,
+                        "parent_rate": 40.2,
+                        "depth": 6,
+                        "children": {}
+                      }
+                    }
+                  }
+                }
+              },
+              "121": {
+                "label": "cluster_14",
+                "is_hidden": true,
+                "count": 5098,
+                "parent_rate": 61.6,
+                "depth": 4,
+                "children": {
+                  "101": {
+                    "label": "cluster_34",
+                    "is_hidden": true,
+                    "count": 4322,
+                    "parent_rate": 84.8,
+                    "depth": 5,
+                    "children": {
+                      "74": {
+                        "label": "cluster_61",
+                        "is_hidden": true,
+                        "count": 3382,
+                        "parent_rate": 78.3,
+                        "depth": 6,
+                        "children": {
+                          "44": {
+                            "label": "cluster_91",
+                            "is_hidden": true,
+                            "count": 3086,
+                            "parent_rate": 91.2,
+                            "depth": 7,
+                            "children": {}
+                          },
+                          "53": {
+                            "label": "cluster_82",
+                            "is_hidden": true,
+                            "count": 296,
+                            "parent_rate": 8.8,
+                            "depth": 7,
+                            "children": {}
+                          }
+                        }
+                      },
+                      "97": {
+                        "label": "cluster_38",
+                        "is_hidden": true,
+                        "count": 940,
+                        "parent_rate": 21.7,
+                        "depth": 6,
+                        "children": {
+                          "55": {
+                            "label": "cluster_80",
+                            "is_hidden": true,
+                            "count": 791,
+                            "parent_rate": 84.1,
+                            "depth": 7,
+                            "children": {}
+                          },
+                          "56": {
+                            "label": "cluster_79",
+                            "is_hidden": true,
+                            "count": 149,
+                            "parent_rate": 15.9,
+                            "depth": 7,
+                            "children": {}
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "76": {
+                    "label": "cluster_59",
+                    "is_hidden": true,
+                    "count": 776,
+                    "parent_rate": 15.2,
+                    "depth": 5,
+                    "children": {
+                      "50": {
+                        "label": "cluster_85",
+                        "is_hidden": true,
+                        "count": 555,
+                        "parent_rate": 71.5,
+                        "depth": 6,
+                        "children": {}
+                      },
+                      "60": {
+                        "label": "cluster_75",
+                        "is_hidden": true,
+                        "count": 221,
+                        "parent_rate": 28.5,
+                        "depth": 6,
+                        "children": {}
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "133": {
+        "label": "cluster_2",
+        "is_hidden": true,
+        "count": 43516,
+        "parent_rate": 65.3,
+        "depth": 2,
+        "children": {
+          "129": {
+            "label": "cluster_6",
+            "is_hidden": true,
+            "count": 18348,
+            "parent_rate": 42.2,
+            "depth": 3,
+            "children": {
+              "86": {
+                "label": "cluster_49",
+                "is_hidden": true,
+                "count": 286,
+                "parent_rate": 1.6,
+                "depth": 4,
+                "children": {
+                  "65": {
+                    "label": "cluster_70",
+                    "is_hidden": true,
+                    "count": 204,
+                    "parent_rate": 71.3,
+                    "depth": 5,
+                    "children": {}
+                  },
+                  "67": {
+                    "label": "cluster_68",
+                    "is_hidden": true,
+                    "count": 82,
+                    "parent_rate": 28.7,
+                    "depth": 5,
+                    "children": {}
+                  }
+                }
+              },
+              "127": {
+                "label": "cluster_8",
+                "is_hidden": true,
+                "count": 18062,
+                "parent_rate": 98.4,
+                "depth": 4,
+                "children": {
+                  "105": {
+                    "label": "cluster_30",
+                    "is_hidden": true,
+                    "count": 1358,
+                    "parent_rate": 7.5,
+                    "depth": 5,
+                    "children": {
+                      "41": {
+                        "label": "cluster_94",
+                        "is_hidden": true,
+                        "count": 1039,
+                        "parent_rate": 76.5,
+                        "depth": 6,
+                        "children": {}
+                      },
+                      "51": {
+                        "label": "cluster_84",
+                        "is_hidden": true,
+                        "count": 319,
+                        "parent_rate": 23.5,
+                        "depth": 6,
+                        "children": {}
+                      }
+                    }
+                  },
+                  "122": {
+                    "label": "cluster_13",
+                    "is_hidden": true,
+                    "count": 16704,
+                    "parent_rate": 92.5,
+                    "depth": 5,
+                    "children": {
+                      "111": {
+                        "label": "cluster_24",
+                        "is_hidden": true,
+                        "count": 8263,
+                        "parent_rate": 49.5,
+                        "depth": 6,
+                        "children": {
+                          "106": {
+                            "label": "cluster_29",
+                            "is_hidden": true,
+                            "count": 4678,
+                            "parent_rate": 56.6,
+                            "depth": 7,
+                            "children": {
+                              "99": {
+                                "label": "cluster_36",
+                                "is_hidden": true,
+                                "count": 4415,
+                                "parent_rate": 94.4,
+                                "depth": 8,
+                                "children": {
+                                  "93": {
+                                    "label": "cluster_42",
+                                    "is_hidden": true,
+                                    "count": 3424,
+                                    "parent_rate": 77.6,
+                                    "depth": 9,
+                                    "children": {
+                                      "58": {
+                                        "label": "cluster_77",
+                                        "is_hidden": true,
+                                        "count": 790,
+                                        "parent_rate": 23.1,
+                                        "depth": 10,
+                                        "children": {}
+                                      },
+                                      "91": {
+                                        "label": "cluster_44",
+                                        "is_hidden": true,
+                                        "count": 2634,
+                                        "parent_rate": 76.9,
+                                        "depth": 10,
+                                        "children": {
+                                          "45": {
+                                            "label": "cluster_90",
+                                            "is_hidden": true,
+                                            "count": 2307,
+                                            "parent_rate": 87.6,
+                                            "depth": 11,
+                                            "children": {}
+                                          },
+                                          "59": {
+                                            "label": "cluster_76",
+                                            "is_hidden": true,
+                                            "count": 327,
+                                            "parent_rate": 12.4,
+                                            "depth": 11,
+                                            "children": {}
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "47": {
+                                    "label": "cluster_88",
+                                    "is_hidden": true,
+                                    "count": 991,
+                                    "parent_rate": 22.4,
+                                    "depth": 9,
+                                    "children": {}
+                                  }
+                                }
+                              },
+                              "61": {
+                                "label": "cluster_74",
+                                "is_hidden": true,
+                                "count": 263,
+                                "parent_rate": 5.6,
+                                "depth": 8,
+                                "children": {}
+                              }
+                            }
+                          },
+                          "108": {
+                            "label": "cluster_27",
+                            "is_hidden": true,
+                            "count": 3585,
+                            "parent_rate": 43.4,
+                            "depth": 7,
+                            "children": {
+                              "94": {
+                                "label": "cluster_41",
+                                "is_hidden": true,
+                                "count": 1746,
+                                "parent_rate": 48.7,
+                                "depth": 8,
+                                "children": {
+                                  "52": {
+                                    "label": "cluster_83",
+                                    "is_hidden": true,
+                                    "count": 280,
+                                    "parent_rate": 16.0,
+                                    "depth": 9,
+                                    "children": {}
+                                  },
+                                  "40": {
+                                    "label": "cluster_95",
+                                    "is_hidden": true,
+                                    "count": 1466,
+                                    "parent_rate": 84.0,
+                                    "depth": 9,
+                                    "children": {}
+                                  }
+                                }
+                              },
+                              "81": {
+                                "label": "cluster_54",
+                                "is_hidden": true,
+                                "count": 1839,
+                                "parent_rate": 51.3,
+                                "depth": 8,
+                                "children": {
+                                  "39": {
+                                    "label": "cluster_96",
+                                    "is_hidden": true,
+                                    "count": 985,
+                                    "parent_rate": 53.6,
+                                    "depth": 9,
+                                    "children": {}
+                                  },
+                                  "43": {
+                                    "label": "cluster_92",
+                                    "is_hidden": true,
+                                    "count": 854,
+                                    "parent_rate": 46.4,
+                                    "depth": 9,
+                                    "children": {}
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "115": {
+                        "label": "cluster_20",
+                        "is_hidden": true,
+                        "count": 8441,
+                        "parent_rate": 50.5,
+                        "depth": 6,
+                        "children": {
+                          "112": {
+                            "label": "cluster_23",
+                            "is_hidden": true,
+                            "count": 921,
+                            "parent_rate": 10.9,
+                            "depth": 7,
+                            "children": {
+                              "102": {
+                                "label": "cluster_33",
+                                "is_hidden": true,
+                                "count": 754,
+                                "parent_rate": 81.9,
+                                "depth": 8,
+                                "children": {
+                                  "48": {
+                                    "label": "cluster_87",
+                                    "is_hidden": true,
+                                    "count": 409,
+                                    "parent_rate": 54.2,
+                                    "depth": 9,
+                                    "children": {}
+                                  },
+                                  "49": {
+                                    "label": "cluster_86",
+                                    "is_hidden": true,
+                                    "count": 345,
+                                    "parent_rate": 45.8,
+                                    "depth": 9,
+                                    "children": {}
+                                  }
+                                }
+                              },
+                              "64": {
+                                "label": "cluster_71",
+                                "is_hidden": true,
+                                "count": 167,
+                                "parent_rate": 18.1,
+                                "depth": 8,
+                                "children": {}
+                              }
+                            }
+                          },
+                          "114": {
+                            "label": "cluster_21",
+                            "is_hidden": true,
+                            "count": 7520,
+                            "parent_rate": 89.1,
+                            "depth": 7,
+                            "children": {
+                              "92": {
+                                "label": "cluster_43",
+                                "is_hidden": true,
+                                "count": 5540,
+                                "parent_rate": 73.7,
+                                "depth": 8,
+                                "children": {
+                                  "79": {
+                                    "label": "cluster_56",
+                                    "is_hidden": true,
+                                    "count": 2337,
+                                    "parent_rate": 42.2,
+                                    "depth": 9,
+                                    "children": {
+                                      "73": {
+                                        "label": "cluster_62",
+                                        "is_hidden": true,
+                                        "count": 1068,
+                                        "parent_rate": 45.7,
+                                        "depth": 10,
+                                        "children": {
+                                          "1": {
+                                            "label": "cluster_134",
+                                            "is_hidden": true,
+                                            "count": 1041,
+                                            "parent_rate": 97.5,
+                                            "depth": 11,
+                                            "children": {}
+                                          },
+                                          "63": {
+                                            "label": "cluster_72",
+                                            "is_hidden": true,
+                                            "count": 27,
+                                            "parent_rate": 2.5,
+                                            "depth": 11,
+                                            "children": {}
+                                          }
+                                        }
+                                      },
+                                      "2": {
+                                        "label": "cluster_133",
+                                        "is_hidden": true,
+                                        "count": 1269,
+                                        "parent_rate": 54.3,
+                                        "depth": 10,
+                                        "children": {}
+                                      }
+                                    }
+                                  },
+                                  "88": {
+                                    "label": "cluster_47",
+                                    "is_hidden": true,
+                                    "count": 3203,
+                                    "parent_rate": 57.8,
+                                    "depth": 9,
+                                    "children": {
+                                      "87": {
+                                        "label": "cluster_48",
+                                        "is_hidden": true,
+                                        "count": 3071,
+                                        "parent_rate": 95.9,
+                                        "depth": 10,
+                                        "children": {
+                                          "32": {
+                                            "label": "cluster_103",
+                                            "is_hidden": true,
+                                            "count": 1209,
+                                            "parent_rate": 39.4,
+                                            "depth": 11,
+                                            "children": {}
+                                          },
+                                          "5": {
+                                            "label": "cluster_130",
+                                            "is_hidden": true,
+                                            "count": 1862,
+                                            "parent_rate": 60.6,
+                                            "depth": 11,
+                                            "children": {}
+                                          }
+                                        }
+                                      },
+                                      "62": {
+                                        "label": "cluster_73",
+                                        "is_hidden": true,
+                                        "count": 132,
+                                        "parent_rate": 4.1,
+                                        "depth": 10,
+                                        "children": {}
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              "110": {
+                                "label": "cluster_25",
+                                "is_hidden": true,
+                                "count": 1980,
+                                "parent_rate": 26.3,
+                                "depth": 8,
+                                "children": {
+                                  "0": {
+                                    "label": "cluster_135",
+                                    "is_hidden": true,
+                                    "count": 1688,
+                                    "parent_rate": 85.3,
+                                    "depth": 9,
+                                    "children": {}
+                                  },
+                                  "36": {
+                                    "label": "cluster_99",
+                                    "is_hidden": true,
+                                    "count": 292,
+                                    "parent_rate": 14.7,
+                                    "depth": 9,
+                                    "children": {}
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "132": {
+            "label": "cluster_3",
+            "is_hidden": true,
+            "count": 25168,
+            "parent_rate": 57.8,
+            "depth": 3,
+            "children": {
+              "131": {
+                "label": "cluster_4",
+                "is_hidden": true,
+                "count": 10855,
+                "parent_rate": 43.1,
+                "depth": 4,
+                "children": {
+                  "128": {
+                    "label": "cluster_7",
+                    "is_hidden": true,
+                    "count": 10661,
+                    "parent_rate": 98.2,
+                    "depth": 5,
+                    "children": {
+                      "125": {
+                        "label": "cluster_10",
+                        "is_hidden": true,
+                        "count": 10504,
+                        "parent_rate": 98.5,
+                        "depth": 6,
+                        "children": {
+                          "119": {
+                            "label": "cluster_16",
+                            "is_hidden": true,
+                            "count": 8137,
+                            "parent_rate": 77.5,
+                            "depth": 7,
+                            "children": {
+                              "46": {
+                                "label": "cluster_89",
+                                "is_hidden": true,
+                                "count": 300,
+                                "parent_rate": 3.7,
+                                "depth": 8,
+                                "children": {}
+                              },
+                              "107": {
+                                "label": "cluster_28",
+                                "is_hidden": true,
+                                "count": 7837,
+                                "parent_rate": 96.3,
+                                "depth": 8,
+                                "children": {
+                                  "20": {
+                                    "label": "cluster_115",
+                                    "is_hidden": true,
+                                    "count": 1535,
+                                    "parent_rate": 19.6,
+                                    "depth": 9,
+                                    "children": {}
+                                  },
+                                  "83": {
+                                    "label": "cluster_52",
+                                    "is_hidden": true,
+                                    "count": 6302,
+                                    "parent_rate": 80.4,
+                                    "depth": 9,
+                                    "children": {
+                                      "70": {
+                                        "label": "cluster_65",
+                                        "is_hidden": true,
+                                        "count": 6150,
+                                        "parent_rate": 97.6,
+                                        "depth": 10,
+                                        "children": {
+                                          "7": {
+                                            "label": "cluster_128",
+                                            "is_hidden": true,
+                                            "count": 4541,
+                                            "parent_rate": 73.8,
+                                            "depth": 11,
+                                            "children": {}
+                                          },
+                                          "9": {
+                                            "label": "cluster_126",
+                                            "is_hidden": true,
+                                            "count": 1609,
+                                            "parent_rate": 26.2,
+                                            "depth": 11,
+                                            "children": {}
+                                          }
+                                        }
+                                      },
+                                      "23": {
+                                        "label": "cluster_112",
+                                        "is_hidden": true,
+                                        "count": 152,
+                                        "parent_rate": 2.4,
+                                        "depth": 10,
+                                        "children": {}
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "120": {
+                            "label": "cluster_15",
+                            "is_hidden": true,
+                            "count": 2367,
+                            "parent_rate": 22.5,
+                            "depth": 7,
+                            "children": {
+                              "117": {
+                                "label": "cluster_18",
+                                "is_hidden": true,
+                                "count": 2204,
+                                "parent_rate": 93.1,
+                                "depth": 8,
+                                "children": {
+                                  "104": {
+                                    "label": "cluster_31",
+                                    "is_hidden": true,
+                                    "count": 1847,
+                                    "parent_rate": 83.8,
+                                    "depth": 9,
+                                    "children": {
+                                      "15": {
+                                        "label": "cluster_120",
+                                        "is_hidden": true,
+                                        "count": 1480,
+                                        "parent_rate": 80.1,
+                                        "depth": 10,
+                                        "children": {}
+                                      },
+                                      "14": {
+                                        "label": "cluster_121",
+                                        "is_hidden": true,
+                                        "count": 367,
+                                        "parent_rate": 19.9,
+                                        "depth": 10,
+                                        "children": {}
+                                      }
+                                    }
+                                  },
+                                  "57": {
+                                    "label": "cluster_78",
+                                    "is_hidden": true,
+                                    "count": 357,
+                                    "parent_rate": 16.2,
+                                    "depth": 9,
+                                    "children": {}
+                                  }
+                                }
+                              },
+                              "42": {
+                                "label": "cluster_93",
+                                "is_hidden": true,
+                                "count": 163,
+                                "parent_rate": 6.9,
+                                "depth": 8,
+                                "children": {}
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "54": {
+                        "label": "cluster_81",
+                        "is_hidden": true,
+                        "count": 157,
+                        "parent_rate": 1.5,
+                        "depth": 6,
+                        "children": {}
+                      }
+                    }
+                  },
+                  "66": {
+                    "label": "cluster_69",
+                    "is_hidden": true,
+                    "count": 194,
+                    "parent_rate": 1.8,
+                    "depth": 5,
+                    "children": {}
+                  }
+                }
+              },
+              "126": {
+                "label": "cluster_9",
+                "is_hidden": true,
+                "count": 14313,
+                "parent_rate": 56.9,
+                "depth": 4,
+                "children": {
+                  "116": {
+                    "label": "cluster_19",
+                    "is_hidden": true,
+                    "count": 10734,
+                    "parent_rate": 75.0,
+                    "depth": 5,
+                    "children": {
+                      "72": {
+                        "label": "cluster_63",
+                        "is_hidden": true,
+                        "count": 2784,
+                        "parent_rate": 25.9,
+                        "depth": 6,
+                        "children": {
+                          "16": {
+                            "label": "cluster_119",
+                            "is_hidden": true,
+                            "count": 2658,
+                            "parent_rate": 95.5,
+                            "depth": 7,
+                            "children": {}
+                          },
+                          "25": {
+                            "label": "cluster_110",
+                            "is_hidden": true,
+                            "count": 126,
+                            "parent_rate": 4.5,
+                            "depth": 7,
+                            "children": {}
+                          }
+                        }
+                      },
+                      "113": {
+                        "label": "cluster_22",
+                        "is_hidden": true,
+                        "count": 7950,
+                        "parent_rate": 74.1,
+                        "depth": 6,
+                        "children": {
+                          "98": {
+                            "label": "cluster_37",
+                            "is_hidden": true,
+                            "count": 3315,
+                            "parent_rate": 41.7,
+                            "depth": 7,
+                            "children": {
+                              "71": {
+                                "label": "cluster_64",
+                                "is_hidden": true,
+                                "count": 1130,
+                                "parent_rate": 34.1,
+                                "depth": 8,
+                                "children": {
+                                  "35": {
+                                    "label": "cluster_100",
+                                    "is_hidden": true,
+                                    "count": 763,
+                                    "parent_rate": 67.5,
+                                    "depth": 9,
+                                    "children": {}
+                                  },
+                                  "37": {
+                                    "label": "cluster_98",
+                                    "is_hidden": true,
+                                    "count": 367,
+                                    "parent_rate": 32.5,
+                                    "depth": 9,
+                                    "children": {}
+                                  }
+                                }
+                              },
+                              "96": {
+                                "label": "cluster_39",
+                                "is_hidden": true,
+                                "count": 2185,
+                                "parent_rate": 65.9,
+                                "depth": 8,
+                                "children": {
+                                  "29": {
+                                    "label": "cluster_106",
+                                    "is_hidden": true,
+                                    "count": 793,
+                                    "parent_rate": 36.3,
+                                    "depth": 9,
+                                    "children": {}
+                                  },
+                                  "31": {
+                                    "label": "cluster_104",
+                                    "is_hidden": true,
+                                    "count": 1392,
+                                    "parent_rate": 63.7,
+                                    "depth": 9,
+                                    "children": {}
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "77": {
+                            "label": "cluster_58",
+                            "is_hidden": true,
+                            "count": 4635,
+                            "parent_rate": 58.3,
+                            "depth": 7,
+                            "children": {
+                              "12": {
+                                "label": "cluster_123",
+                                "is_hidden": true,
+                                "count": 4094,
+                                "parent_rate": 88.3,
+                                "depth": 8,
+                                "children": {}
+                              },
+                              "33": {
+                                "label": "cluster_102",
+                                "is_hidden": true,
+                                "count": 541,
+                                "parent_rate": 11.7,
+                                "depth": 8,
+                                "children": {}
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "78": {
+                    "label": "cluster_57",
+                    "is_hidden": true,
+                    "count": 3579,
+                    "parent_rate": 25.0,
+                    "depth": 5,
+                    "children": {
+                      "75": {
+                        "label": "cluster_60",
+                        "is_hidden": true,
+                        "count": 3451,
+                        "parent_rate": 96.4,
+                        "depth": 6,
+                        "children": {
+                          "8": {
+                            "label": "cluster_127",
+                            "is_hidden": true,
+                            "count": 3077,
+                            "parent_rate": 89.2,
+                            "depth": 7,
+                            "children": {}
+                          },
+                          "10": {
+                            "label": "cluster_125",
+                            "is_hidden": true,
+                            "count": 374,
+                            "parent_rate": 10.8,
+                            "depth": 7,
+                            "children": {}
+                          }
+                        }
+                      },
+                      "38": {
+                        "label": "cluster_97",
+                        "is_hidden": true,
+                        "count": 128,
+                        "parent_rate": 3.6,
+                        "depth": 6,
+                        "children": {}
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
