@@ -2,7 +2,8 @@ import React, { useRef } from "react";
 import styled from "@emotion/styled";
 import D3WithSVG from "./D3WithSVG";
 import D3WithCanvas from "./D3WithCanvas";
-import D3WithHighCharts from "./D3WithHighCharts";
+import TestWithHighcharts from "./TestWithHighcharts";
+import TestWithHighchartsAndGates from "./TestWithHighchartsAndGates";
 import ClusterSelection from "./ClusterSelection";
 import Sunburst from "./Sunburst";
 
@@ -41,7 +42,7 @@ const Content = styled.div`
 `;
 
 const Playground: React.FC = ({ children }) => {
-  const [currentLib, setCurrentLib] = React.useState<t.PlotType>("sunburst");
+  const [currentLib, setCurrentLib] = React.useState<t.PlotType>("gating");
   const [data, setData] = React.useState<t.Data>();
   const [availableClusters, setClusters] = React.useState<Array<t.Cluster>>();
   const [availableMarkers, setMarkers] = React.useState<Array<t.Marker>>();
@@ -49,7 +50,7 @@ const Playground: React.FC = ({ children }) => {
     Array<t.Cluster>
   >([]);
   const clusterColors = useRef<Record<t.Cluster, string>>({});
-  const [numberOfPlots, setNumberOfPlots] = React.useState(0);
+  const [numberOfPlots, setNumberOfPlots] = React.useState(1);
 
   const ChartComponent = (() => {
     switch (currentLib) {
@@ -58,9 +59,11 @@ const Playground: React.FC = ({ children }) => {
       case "d3canvas":
         return D3WithCanvas;
       case "highchart":
-        return D3WithHighCharts;
+        return TestWithHighcharts;
       case "sunburst":
         return Sunburst;
+      case "gating":
+        return TestWithHighchartsAndGates;
     }
   })();
 

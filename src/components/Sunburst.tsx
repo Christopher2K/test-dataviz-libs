@@ -4,6 +4,7 @@ import _ from "lodash";
 import * as Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import SunburstModule from "highcharts/modules/sunburst";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 import { SunburstCluster } from "../types";
 
@@ -36,15 +37,10 @@ const Sunburst: React.FC<SunburstProps> = () => {
     title: {
       text: "",
     },
+    colors: ["#da2c38", "#226f54", "#87c38f", "#f4f0bb", "#43291f"],
     chart: {
       height: 500,
       width: 600,
-      zoomType: "xy",
-      panning: {
-        enabled: true,
-        type: "xy",
-      },
-      panKey: "shift",
     },
     series: [
       {
@@ -57,6 +53,7 @@ const Sunburst: React.FC<SunburstProps> = () => {
           },
         },
         dataLabels: {
+          enabled: false,
           format: "{point.name}",
           rotationMode: "circular",
         },
@@ -174,7 +171,24 @@ const Sunburst: React.FC<SunburstProps> = () => {
   return (
     <Container>
       {usedData && (
-        <HighchartsReact highcharts={Highcharts} options={options} />
+        <TransformWrapper>
+          {({
+            zoomIn,
+            zoomOut,
+            resetTransform,
+          }: Record<string, () => void>) => (
+            <>
+              <div className="tools">
+                <button onClick={zoomIn}>+</button>
+                <button onClick={zoomOut}>-</button>
+                <button onClick={resetTransform}>x</button>
+              </div>
+              <TransformComponent>
+                <HighchartsReact highcharts={Highcharts} options={options} />
+              </TransformComponent>
+            </>
+          )}
+        </TransformWrapper>
       )}
       {maxDepth && (
         <div>
