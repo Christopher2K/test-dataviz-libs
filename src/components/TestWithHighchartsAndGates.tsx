@@ -2,9 +2,8 @@ import React, { useEffect, useRef, useState, RefObject } from "react";
 import * as Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import Boost from "highcharts/modules/boost";
-import { extent } from "d3";
 import { ChartProps, Dot } from "../types";
-import { cpus } from "os";
+
 Boost(Highcharts);
 
 type Gate = {
@@ -26,35 +25,30 @@ const TestWithHighchartsAndGates: React.FC<ChartProps> = ({
     chart: Highcharts.Chart;
     container: RefObject<HTMLDivElement>;
   }>(null);
-
-  let dotsData: Array<{
-    name: string;
-    color: string;
-    data: Array<Dot>;
-  }> = [];
-
-  for (let key in data) {
-    if (selectedClusters.includes(key)) {
-      dotsData.push({
-        color: clusterColors[key],
-        name: key,
-        data: data[key].map((d) => ({
-          x: d[markerX] as number,
-          y: d[markerY] as number,
-          color: clusterColors[key],
-        })),
-      });
-    }
-  }
-
-  const dots = ([] as Array<Dot>).concat(...dotsData.map((d) => d.data));
-
-  const xExtent = extent(dots, (d) => d.x) as number[];
-  const yExtent = extent(dots, (d) => d.y) as number[];
+  const [formattedData, setFormattedData] = useState<
+    Highcharts.SeriesScatterOptions[]
+  >();
+  const [dotsData, setDotsData] = useState<
+    Array<{
+      name: string;
+      color: string;
+      data: Array<Dot>;
+    }>
+  >([]);
 
   let options: Highcharts.Options = {
     title: {
       text: "Highchart test",
+    },
+    boost: {
+      usePreallocated: true,
+      allowForce: true,
+      debug: {
+        timeSetup: true,
+      },
+      enabled: true,
+      seriesThreshold: 1,
+      useGPUTranslations: true,
     },
     chart: {
       type: "scatter",
@@ -68,20 +62,15 @@ const TestWithHighchartsAndGates: React.FC<ChartProps> = ({
             yAxis: [yAxis],
           } = e;
 
-          const xMin = xAxis.axis.toPixels(xAxis.min, true);
-          const xMax = xAxis.axis.toPixels(xAxis.max, true);
-          const yMin = yAxis.axis.toPixels(yAxis.min, true);
-          const yMax = yAxis.axis.toPixels(yAxis.max, false);
-
           setGate({
-            x: this.plotLeft + xAxis.axis.toPixels(xAxis.min, true),
-            y: this.plotTop + yAxis.axis.toPixels(yAxis.max, true),
+            x: xAxis.axis.toPixels(xAxis.min, false),
+            y: yAxis.axis.toPixels(yAxis.max, false),
             width:
-              xAxis.axis.toPixels(xAxis.max, true) -
-              xAxis.axis.toPixels(xAxis.min, true),
+              xAxis.axis.toPixels(xAxis.max, false) -
+              xAxis.axis.toPixels(xAxis.min, false),
             height:
-              yAxis.axis.toPixels(yAxis.min, true) -
-              yAxis.axis.toPixels(yAxis.max, true),
+              yAxis.axis.toPixels(yAxis.min, false) -
+              yAxis.axis.toPixels(yAxis.max, false),
           });
 
           return false;
@@ -93,55 +82,72 @@ const TestWithHighchartsAndGates: React.FC<ChartProps> = ({
       title: {
         text: markerX,
       },
-      min: Math.min(...(xExtent as number[])),
-      max: Math.max(...(xExtent as number[])),
+      startOnTick: false,
+      endOnTick: false,
     },
     yAxis: {
       title: {
         text: markerY,
       },
-      min: Math.min(...(yExtent as number[])),
-      max: Math.max(...(yExtent as number[])),
+      startOnTick: false,
+      endOnTick: false,
     },
     plotOptions: {
       scatter: {
         boostThreshold: 1000,
       },
     },
-    series: dotsData.map((d, i) => {
-      return {
-        name: d.name,
-        color: d.color,
-        data: d.data.map((dot) => [dot.x, dot.y]),
-        type: "scatter",
-        marker: {
-          radius: 1,
-        },
-        // tooltip: {
-        //   followPointer: false,
-        //   pointFormat: "[{point.x:.1f}, {point.y:.1f}]",
-        // },
-      };
-    }),
+    series: formattedData,
     tooltip: { enabled: false },
   };
-
-  useEffect(() => {}, []);
 
   useEffect(() => {
     if (chartRef.current && chartRef.current.chart && gate) {
       chartRef.current.chart.renderer
-        .rect()
-        .attr({ ...gate })
+        .rect(gate.x, gate.y, gate.width, gate.height, 0, 0.5)
         .css({
           stroke: "black",
-          strokeWidth: ".5",
           fill: "black",
           fillOpacity: ".1",
         })
         .add();
     }
   }, [gate]);
+
+  useEffect(() => {
+    let arr = [];
+    for (let key in data) {
+      if (selectedClusters.includes(key)) {
+        arr.push({
+          color: clusterColors[key],
+          name: key,
+          data: data[key].map((d) => ({
+            x: d[markerX] as number,
+            y: d[markerY] as number,
+            color: clusterColors[key],
+          })),
+        });
+      }
+    }
+
+    setDotsData(arr);
+  }, [clusterColors, data, markerX, markerY, selectedClusters]);
+
+  useEffect(() => {
+    setFormattedData(
+      dotsData.map((d, i) => {
+        return {
+          name: d.name,
+          color: d.color,
+          data: d.data.map((dot) => [dot.x, dot.y]),
+          type: "scatter",
+          marker: {
+            radius: 1,
+          },
+        };
+      })
+    );
+  }, [dotsData]);
 
   return (
     <HighchartsReact highcharts={Highcharts} options={options} ref={chartRef} />
